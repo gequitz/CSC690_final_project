@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CryptoCurrencyMonitor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Cryptocurrency and Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpP-FK-WGp">
+                                <rect key="frame" x="10" y="54" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dU-Xe-7jj">
+                                <rect key="frame" x="0.0" y="111" width="414" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="c1I-Ev-Eeg"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="hru-Eg-FQO"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crypto Currency Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUM-ck-HKb">
+                                <rect key="frame" x="10" y="347" width="244" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfW-NX-pQL">
+                                <rect key="frame" x="264" y="347" width="16" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency Conversion to USD:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h16-VK-Uho">
+                                <rect key="frame" x="10" y="397" width="255" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TL7-r6-38B">
+                                <rect key="frame" x="275" y="397" width="10" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bitcoin_PNG25" translatesAutoresizingMaskIntoConstraints="NO" id="ufm-cE-DuI">
+                                <rect key="frame" x="88" y="472" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DpP-FK-WGp" secondAttribute="trailing" constant="10" id="1SR-7g-HtC"/>
+                            <constraint firstItem="TL7-r6-38B" firstAttribute="leading" secondItem="h16-VK-Uho" secondAttribute="trailing" constant="10" id="2p7-HK-5S5"/>
+                            <constraint firstItem="DpP-FK-WGp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="EWt-0i-s8B"/>
+                            <constraint firstItem="h16-VK-Uho" firstAttribute="top" secondItem="BUM-ck-HKb" secondAttribute="bottom" constant="20" id="KeP-gB-4Yq"/>
+                            <constraint firstItem="DpP-FK-WGp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="KyG-Fa-M3s"/>
+                            <constraint firstItem="xfW-NX-pQL" firstAttribute="top" secondItem="9dU-Xe-7jj" secondAttribute="bottom" constant="20" id="L9O-4j-n3M"/>
+                            <constraint firstItem="9dU-Xe-7jj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Lnb-W4-lM0"/>
+                            <constraint firstItem="xfW-NX-pQL" firstAttribute="leading" secondItem="BUM-ck-HKb" secondAttribute="trailing" constant="10" id="NS1-VM-Ydn"/>
+                            <constraint firstItem="9dU-Xe-7jj" firstAttribute="top" secondItem="DpP-FK-WGp" secondAttribute="bottom" constant="36" id="jIL-U2-wCa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9dU-Xe-7jj" secondAttribute="trailing" id="kpI-Wr-dgD"/>
+                            <constraint firstItem="BUM-ck-HKb" firstAttribute="top" secondItem="9dU-Xe-7jj" secondAttribute="bottom" constant="20" id="lKd-WD-ula"/>
+                            <constraint firstItem="TL7-r6-38B" firstAttribute="top" secondItem="xfW-NX-pQL" secondAttribute="bottom" constant="20" id="lcg-z5-daK"/>
+                            <constraint firstItem="h16-VK-Uho" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="pCU-eV-mTJ"/>
+                            <constraint firstItem="BUM-ck-HKb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="rjm-Nt-6eZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="currencyConversion" destination="TL7-r6-38B" id="LFp-gX-25F"/>
+                        <outlet property="picker" destination="9dU-Xe-7jj" id="AX5-W8-fLu"/>
+                        <outlet property="price" destination="xfW-NX-pQL" id="H5T-dy-ArV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="119.86607142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bitcoin_PNG25" width="797" height="790"/>
+    </resources>
+</document>
