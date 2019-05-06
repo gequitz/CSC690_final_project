@@ -12,8 +12,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     
     
-    
-    
     @IBOutlet weak var picker: UIPickerView!
     
     
@@ -26,19 +24,40 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     var currency:  [String] = []
     
-    
+    var currencyPrice: Double = 0.0
+    var USDPrice: Double = 1.0
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        // Crypto-currency and its symbol
+        // Bitcoin : BTC
+        // Ethereum : ETH
+        // Ripple : XRP
+        // Bitcoin Cash : BCH
+        // Stellar Lumens: XLM
+        // EOS: EOS
+        // Litecoin: LTC
+        // Cardano: ADA
+        // Monero: XMR
+        // Tron: TRX
+        
+        
+        // Regular Currency and its symbol
+        // US Dollar : USD
+        // Euro :  EUR
+        // Japanese Yen: JPY
+        // Great Britain Pound: GBP
+        // Swiss Frank : CHF
+        // Canadian Dollar: CAD
+        // Australian Dollar : AUD
+        
         cryptoCurrency = [ "BTC", "ETH", "XRP", "BCH", "XLM", "EOS", "LTC", "ADA", "XMR", "TRX"]
         
         currency = ["USD", "EUR", "JPY", "GBP", "CHF", "CAD", "AUD" ]
         
-        
-        
-        
+      
         
     }
     
@@ -46,7 +65,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         
-        return 2
+        return 2  // there are two elements in the PickerView
         
     }
     
@@ -98,19 +117,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     
                     
                     
-                    
-                    
                     if let json = try? JSONSerialization.jsonObject(with: data, options:[]) as? [String:Double]{
                         
                         DispatchQueue.main.async {  // runs the code in the main thread
                             
-                            // print (json)
                             
-                            // print (type (of: json))
                             
                             if let price = json[currency] {
                                 
-                                
+                                self.currencyPrice = price
                                 
                                 let formatter = NumberFormatter()
                                 
@@ -121,6 +136,56 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                                 let formattedPrice = formatter.string(from: NSNumber(value:price))
                                 
                                 self.price.text = formattedPrice
+                                
+                            }
+                            // making the currency conversion to USD
+                            self.currencyConversion.text = String(format: "%7.3f",self.currencyPrice/self.USDPrice)
+                
+                            
+                        }
+                        
+                    }
+                    
+                }
+                    
+                else{
+                    
+                    print("Error: did not connect to the site.")
+                    
+                }
+                
+                }.resume()
+            
+        }
+        
+    }
+    
+    
+    //https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD,JPY,EUR
+    // get the price in USD to make the conversion
+    func getUSDPrice(cryptoCurrency: String){
+        
+        if let url = URL(string: "https://min-api.cryptocompare.com/data/price?fsym=" + cryptoCurrency + "&tsyms=" + "USD"){
+            
+            URLSession.shared.dataTask(with: url) {(data, response, error) in
+                
+                if let data = data {
+                    
+                    
+                    
+                    if let json = try? JSONSerialization.jsonObject(with: data, options:[]) as? [String:Double]{
+                        
+                        DispatchQueue.main.async {  // runs the code in the main thread
+                            
+                           
+                            
+                            if let USD_price = json["USD"] {
+                                
+                               // print ("USD_price ", self.currencyPrice,USD_price)
+                                
+                                self.USDPrice = USD_price
+                                
+                              
                                 
                             }
                             
@@ -151,10 +216,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     {
         
         
+        // get price in USD
+        getUSDPrice(cryptoCurrency: cryptoCurrency[picker.selectedRow(inComponent: 0)])
         
+        // Get price in the given currency
         getCurrencyPrice(cryptoCurrency: cryptoCurrency[picker.selectedRow(inComponent: 0)], currency: currency[picker.selectedRow(inComponent: 1)])
         
-        
+       
+       
         
     }
     
